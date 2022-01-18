@@ -1,5 +1,6 @@
+import { User } from './../model/user';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from '../model/user';
+
 
 @Component({
   selector: 'app-user-list',
@@ -14,9 +15,11 @@ export class UserListComponent implements OnInit {
    * @var users {User[]} - Input tulajdonság
    * @default []
    */
-  
+  @Input() users!: User[];
+
   @Output() delUser: EventEmitter<User> = new EventEmitter();
   currentUser: User = new User();
+  @Output() onDelete: EventEmitter<User> = new EventEmitter();
 
   constructor() { }
 
@@ -31,7 +34,9 @@ export class UserListComponent implements OnInit {
    * @param user {User} - egy felhasználó
    * @returns {void}
    */
-  
+  onSelectUser(user: User): void {
+    this.currentUser = user;
+  }
 
   /**
    * FELADAT!
@@ -43,6 +48,9 @@ export class UserListComponent implements OnInit {
    * @param user {User} - egy felhasználó
    * @returns {void}
    */
-  
+  onDeleteUser(user: User): void {
+    this.delUser.emit(user);
+    this.currentUser = new User();
+  }
 
 }
