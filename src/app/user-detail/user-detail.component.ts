@@ -24,7 +24,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   /**
-   * FELADAT!
+   * FELADAT! ...
    * A törlés gombra kattintás esetén lefutó metódus.
    * Neve: onDelete
    * Működése: a this.delUser.emit metódust meghívja a kapott user-rel.
